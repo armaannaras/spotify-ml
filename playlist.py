@@ -5,8 +5,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 import random
 
-client_id = "CLIENT ID"" #remove
-secret_id = "SECRET ID #remove
+client_id = "CLIENT ID" #remove
+secret_id = "SECRET ID" #remove
 redirect_uri = "REDIRECT URI"
 username = "USERNAME" #remove
 scope = 'user-library-read playlist-modify-public playlist-read-private playlist-modify-private' #permissions to edit playlists
