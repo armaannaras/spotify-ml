@@ -126,10 +126,5 @@ def ratesongs(df): #I have a df of the songs i want to run through and add. I'll
     songs = random.sample(songs, 100)
     return sp.playlist_add_items(playlist, songs)
 
-ratesongs(newfeattrackdf)
-
-#print(knn.predict([[df.loc[0, "danceability"], df.loc[0, "energy"], df.loc[0, "tempo"], df.loc[0, "loudness"], df.loc[0, "key"], df.loc[0, "valence"]]]))
-
-
-##
+ratesongs(newfeattrackdf) #ALL DONE
 
