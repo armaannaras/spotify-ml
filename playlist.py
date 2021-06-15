@@ -72,10 +72,10 @@ def get_audiofeatures(df):
 
 newtrackdf = get_audiofeatures(trackdf)
 
-scaler = StandardScaler()
+scaler = StandardScaler() #Standardizes things
 scaler.fit(newtrackdf.drop(["Artist", "Song Name", "Song URI", "Rating"], axis = 1))
 scaled = scaler.transform(newtrackdf.drop(["Artist", "Song Name", "Song URI", "Rating"], axis = 1))
-scaleddf = pd.DataFrame(scaled, columns = newtrackdf.columns[:-1])
+scaleddf = pd.DataFrame(scaled, columns = newtrackdf.drop(["Artist", "Song Name", "Song URI", "Rating"], axis = 1).columns)
 
 X = scaleddf[['danceability', 'energy','tempo', 'loudness', #Some of the features are mostly the same across all songs
             'key','valence']]                                      #so I'm cutting them
@@ -131,5 +131,4 @@ def ratesongs(df): #I have a df of the songs i want to run through and add. I'll
     songs = random.sample(songs, 100)
     return sp.playlist_add_items(playlist, songs)
 
-ratesongs(scaledfeatttrackdf) #ALL DONE
-
+ratesongs(scaledfeattrackdf) #ALL DONE
