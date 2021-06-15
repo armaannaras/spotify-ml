@@ -52,23 +52,45 @@ def gettrackdf():
 
 trackdf = gettrackdf()
 def get_audiofeatures(df):
+    danceability = []
+    acousticness= []
+    energy = []
+    tempo = []
+    instrumentalness = []
+    loudness = []
+    liveness = []
+    key = []
+    valence = []
+    speechiness = []
+
     for i in range(len(df["Song URI"])): #Now need to fetch audio features. I didn't feel duration really mattered, so it's not taken
         features = sp.audio_features(df["Song URI"][i])[0]
         if features == None:
             df.drop([i])
         else:
-            df.loc[i, "danceability"] = features["danceability"]
-            df.loc[i, "acousticness"] = features['acousticness']
-            df.loc[i, "energy"] = features['energy']
-            df.loc[i, "tempo"] = features['tempo']
-            df.loc[i, "instrumentalness"] = features['instrumentalness']
-            df.loc[i, "loudness"] = features['loudness']
-            df.loc[i, "liveness"] = features['liveness']
-            df.loc[i, "key"] = features['key']
-            df.loc[i, "valence"] = features['valence']
-            df.loc[i, "speechiness"] = features['speechiness']
-    return df
+            danceability.append(features["danceability"])
+            acousticness.append(features["acousticness"])
+            energy.append(features["energy"])
+            tempo.append(features["tempo"])
+            instrumentalness.append(features["instrumentalness"])
+            loudness.append(features["loudness"])
+            liveness.append(features["liveness"])
+            key.append(features["key"])
+            valence.append(features["valence"])
+            speechiness.append(features["speechiness"])
+    df["danceability"] = danceability
+    df["acousticness"] = acousticness
+    df["energy"] = energy
+    df["tempo"] = tempo
+    df["instrumentalness"] = instrumentalness
+    df["loudness"] = loudness
+    df["liveness"] = liveness
+    df["key"] = key
+    df["valence"] = valence
+    df["speechiness"] = speechiness
 
+
+    return df
 
 newtrackdf = get_audiofeatures(trackdf)
 
