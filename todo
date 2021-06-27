@@ -1,0 +1,1 @@
+reminder: fix getaudiofeatures function in main, so that it can handle spotify data error (properly drops tracks that don't have audio features)
