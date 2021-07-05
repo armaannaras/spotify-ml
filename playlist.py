@@ -66,7 +66,7 @@ def get_audiofeatures(df):
     for i in range(len(df["Song URI"])): #Now need to fetch audio features. I didn't feel duration really mattered, so it's not taken
         features = sp.audio_features(df["Song URI"][i])[0]
         if features == None:
-            df.drop([i])
+            df.drop([i], inplace = True)
         else:
             danceability.append(features["danceability"])
             acousticness.append(features["acousticness"])
